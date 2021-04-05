@@ -1,8 +1,28 @@
-# Kealan O'Callaghan Graph theory project 2021
-# G00373834
+import sys
+import os
 
-def printFile():
-    file = open("README.txt", "r")
-    print(file.read())
+# Asks the user to enter their file location
+# User must enter their file path in the format c/users/keala/repo/graph-theory-project/README.txt
+# This is to deal with the /mnt/ file problem when using a WSL
+user_input = input("Enter the path of your file in the format c/users/file.txt: ")
 
-printFile()
+#Asserts the path exists
+assert os.path.exists("/mnt/"+user_input), "I did not find the file at, "+str(user_input)
+
+# variable f applied to the txt file
+f = open("/mnt/"+user_input)
+
+# prints each line in the txt file
+for line in f:
+    print(line)
+
+
+f.close()
+
+
+
+
+
+
+
+
