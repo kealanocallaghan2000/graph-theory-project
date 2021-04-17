@@ -4,13 +4,13 @@ import os
 # Asks the user to enter their file location
 # User must enter their file path in the format c/users/keala/repo/graph-theory-project/README.txt
 # This is to deal with the /mnt/ file problem when using a WSL
-#file_path = input("Enter the path of your file in the format c/users/file.txt: ")
+file_path = input("Enter the path of your file in the format c/users/file.txt: ")
 
-#output = ""
-#count = 1
+output = ""
+count = 1
 
-#Asserts the path exists
-#assert os.path.exists("/mnt/"+file_path), "I did not find the file at, "+str(user_input)
+# Asserts the path exists
+assert os.path.exists("/mnt/"+file_path), "I did not find the file at, "+str(file_path)
 
 regex = input("Enter the regex you would like to postfix: ")
 
@@ -20,18 +20,12 @@ def shunt(regex):
     postfix = ""
     # The shunting yard operator stack.
     stack = ""
-    # array for alphabet
-    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     # Operator precedence.
     prec = {'*': 100, '.': 90, '|': 80}
     # Loop through the input a character at a time.
     for c in regex:
-        # c is a digit.
-        if c in alphabet:
-            # Push it to the output.
-            postfix = postfix + c
         # c is an operator.
-        elif c in {'*', '.', '|'}:
+        if c in {'*', '.', '|'}:
             # Check what is on the stack.
             while len(stack) > 0 and stack[-1] != '(' and prec[stack[-1]] >= prec[c]:
                 # Append operator at top of stack to output.
@@ -51,6 +45,11 @@ def shunt(regex):
                 stack = stack[:-1]
             # Remove open bracket from stack.
             stack = stack[:-1]
+                # c is a non-special.
+        else:
+            # Push it to the output.
+            postfix = postfix + c
+
     # Empty the operator stack.
     while len(stack) != 0:
         # Append operator at top of stack to output.
@@ -195,7 +194,25 @@ def re_to_nfa(postfix):
         return stack[0]
 
 if __name__ == "__main__":
-        print(f"prefix: {regex} -> postfix: {shunt(regex)}")
-        postfix = shunt(regex)
-        print(f"nfa:     {re_to_nfa(postfix)}")
+
+    infix = regex # regular expression
+    postfix = shunt(regex) # postfix / shunting algorithm output
+    nfa = re_to_nfa(postfix) # non finite automata
+
+    print()
+    print(f"infix: {infix} -> postfix: {postfix}")
+    print(f"nfa:     {nfa}")
+    print()
+
+    counter = 1 # line 1..2..3..
+
+    file = open("/mnt/"+file_path) # reads file
+
+    for line in file: # for every line in the txt file
+        print(f"Line: {counter}  ")
+        for word in line.split(): # for every word in the line
+            match = nfa.match(word) # match the word to the regular expression
+            print(f"{word} - {match}")
+        counter = counter + 1
         print()
+    print()
