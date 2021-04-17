@@ -26,3 +26,9 @@ Apr 15:
 -> Applied thompsons construction to the project so now when the user inputs their regular expression,
 the project will make a postfix version of it and then turn it into an nfa.
 -> Watching videos on the match function to be applied soon.
+
+Apr 17:
+-> Applied the matching function to everything i've done to date. 
+-> Brought back my file input code and regular expression input code.
+-> Watched videos on matching function again to figure out how it works.
+-> User can now choose their own regular expression and text file path.
