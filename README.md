@@ -1,8 +1,8 @@
 ---Log of progress---
 
 Feb 7th:
--> Created a repository and a txt file as my first commit for the graph theory project, brushed up on ideas and concepts to date 
-to help with understanding how to go about the project. No grasp on how the python will be implemented to 
+-> Created a repository and a txt file as my first commit for the graph theory project, brushed up on ideas and 
+concepts to date to help with understanding how to go about the project. No grasp on how the python will be implemented to 
 use automata.
 
 March 31st:
@@ -32,3 +32,16 @@ Apr 17:
 -> Brought back my file input code and regular expression input code.
 -> Watched videos on matching function again to figure out how it works.
 -> User can now choose their own regular expression and text file path.
+
+
+
+---Programme Instructions---
+
+-> To run the project, clone the code and depending on your version of python type "python3 project.py".
+-> At first you will be asked to enter the location of your txt file which you're looking to process.
+-> Type your txt file path in the format 'C/Users/Name/file.txt' and the programme will interpret that for
+the WSL format.
+-> If the programme finds your file, it will then ask you to then enter the regular expression you would
+like to apply on the text file (explained below). 
+-> Once you've entered your regular expression and hit enter, the programme will apply it and output
+each word, in each line of your textfile and whether or not it matches the regular expression you chose.
