@@ -87,7 +87,6 @@ Some real world applications of regular expressions are:
 ###### Credit card number Validation:
 
 **Visa Credit Card**: ^4[0–9]{12}(?:[0–9]{3})?$
-**American Express Credit Card**: ^3[47][0–9]{13}$
 **Mastercard**: ^(?:5[1–5][0–9]{2}|222[1–9]|22[3–9][0–9]|2[3–6][0–9]{2}|27[01][0–9]|2720)[0–9]{12}$
 **Discover Card**: ^6(?:011|5[0–9]{2})[0–9]{12}$
 
@@ -116,3 +115,13 @@ Regular expressions will compile in different implementations most of the time, 
 
 
 ### Can all formal languages be encoded as regular expressions?
+
+Before we answer this question, we should define a few things first.
+What is a formal language? A formal language is a set of finite strings. A string is simply a sequence of characters. All of the following are formal languages:
+
+* The set of all strings
+* The empty set
+* The set of all strings that have an even number of characters
+* The set of all strings that begin with the letter ‘q’
+
+It is said that a regular expression can decide a formal language if both their statments are equivalent for each string. Eg. **X** is in the language **Y**, **X** is accepted by **Z**, or in other words, **X** is equivalent to **Z** - they both describe the same set of strings.
