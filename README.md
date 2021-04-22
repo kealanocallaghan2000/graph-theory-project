@@ -73,6 +73,8 @@ Operator | Effect
 
 The most important part about regular expressions is the concepts. It's important to not get bogged down in learning all the different operators as when you figure out what they all do, the differences in syntax amount to little more than small dialects. 
 
+Regular expressions (regexes) are a core component of modern programming languages. Regexes are commonly used for text processing and input sanitization, appearing, for example, in an estimated 30-40% of open-source Python and JavaScript projects.
+
 Some real world applications of regular expressions are:
 ###### Email validation
 
@@ -84,16 +86,33 @@ Some real world applications of regular expressions are:
 
 ###### Credit card number Validation:
 
-Visa Credit Card: ^4[0–9]{12}(?:[0–9]{3})?$
-American Express Credit Card: ^3[47][0–9]{13}$
-Mastercard: ^(?:5[1–5][0–9]{2}|222[1–9]|22[3–9][0–9]|2[3–6][0–9]{2}|27[01][0–9]|2720)[0–9]{12}$
-Discover Card: ^6(?:011|5[0–9]{2})[0–9]{12}$
+**Visa Credit Card**: ^4[0–9]{12}(?:[0–9]{3})?$
+**American Express Credit Card**: ^3[47][0–9]{13}$
+**Mastercard**: ^(?:5[1–5][0–9]{2}|222[1–9]|22[3–9][0–9]|2[3–6][0–9]{2}|27[01][0–9]|2720)[0–9]{12}$
+**Discover Card**: ^6(?:011|5[0–9]{2})[0–9]{12}$
 
 
 As you can see, Regular expressions are extremely useful in computer science, especially in any information based systems where searching and replacing text is commonplace.
 
 
 
+
 ### How do regular expressions differ across implementations?
 
-As regular expressions are so powerful and useful across many different applications, it's no surprise that they can differ between different implementations.
+As regular expressions are so powerful and useful across many different applications, it's no surprise that they can differ between different implementations. Many applications and programming languages have their own implementation of regular expressions, often with slight and sometimes with significant differences from other implementations.
+
+This can cause some serious portability issues if you're expecting to just copy and paste regular expressions between different programming languages. A paper written in Virginia Tech, USA states that 'this lack of standardization comes as no surprise to developers familiar with regexes as a library feature rather than a language primitive'.
+
+Different programming languages have distinct regex engines which may show different performance characteristics. A re-used regex might have worse worst-case performance in its new language than the one that it has been reused from. For example: a regular expression which is being transported from php to Node.js will have catastrophically worse vulnerabilities because regexes are knows for having worse worst-case performance in Node.js.
+
+##### Examples of differences in regular expressions across languages:
+
+* Visual studio 2010 uses {} instead of () to group expressions for back references.
+* In python '[...]' means Character class, whereas in grep it represents a Bracket expression.
+* In SED, (){}[] are escaped when used in regex's, which can be extremely problematic for other implementations.
+
+Regular expressions will compile in different implementations most of the time, but the small differences in each different type make them very hard to be standardized. Their apparent portability masks problems of correctness and performance, but not enough that they can be called a standardized language.
+
+
+
+### Can all formal languages be encoded as regular expressions?
