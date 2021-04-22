@@ -1,4 +1,4 @@
-##---Log of progress---
+## Log of progress
 
 Feb 7th:
 * Created a repository and a txt file as my first commit for the graph theory project, brushed up on ideas and oncepts to date to help with understanding how to go about the project. No grasp on how the python will be implemented to use automata.
@@ -32,8 +32,7 @@ Apr 17:
 * User can now choose their own regular expression and text file path.
 
 
-
-##---Programme Instructions---
+## Programme Instructions 
 
 * To run the project, clone the code and depending on your version of python type "python3 project.py".
 * At first you will be asked to enter the location of your txt file which you're looking to process.
@@ -43,3 +42,31 @@ the WSL format.
 like to apply on the text file (explained below). 
 * Once you've entered your regular expression and hit enter, the programme will apply it and output
 each word, in each line of your textfile and whether or not it matches the regular expression you chose.
+
+
+# Definitions
+
+### What is a regular expression?
+
+Regular expressions are very powerful, yet simple sequence of characters which can be looked at almost as a mini programme or piece of code. Regular expressions are generally used for searching string of text or for searching and replacing words/text in a paragraph or a file - it describes a set of strings that match the pattern in the regular expression.
+
+Conceptually, the simplest regular expressions are literal characters. The pattern N matches the character 'N'. Regular expressions next to each other match sequences. For example, the pattern 'Ian', matches the sequence 'I' followed by 'a' followed by 'n'. When we add just a little more complexity, you can match either 'ian' or 'Ian' with the patter [Ii]an. 
+
+There are many operators in regular expressions, each with their own set of rules/applications. For example, the '.' operator matches any single character. A '*' will match the preceeding letter 0 or more times. The '?' will match the preceeding item at most, once. I'll include a small table of all the possible operators below.
+
+Operator | Effect
+-------- | ------
+'.' | Matches any single character.
+'?' | The preceding item is optional and will be matched, at most, once.
+'*' | The preceding item will be matched zero or more times.
+'+' | The preceding item will be matched one or more times.
+'{N}' | The preceding item is matched exactly N times.
+'{N,}' | The preceding item is matched N or more times.
+{N,M} | The preceding item is matched at least N times, but not more than M times.
+'-' | represents the range if it's not first or last in a list or the ending point of a range in a list.
+'^' | Matches the empty string at the beginning of a line; also represents the characters not in the range of a list.
+'$' | Matches the empty string at the end of a line.
+'\b' | Matches the empty string at the edge of a word.
+'\B' | Matches the empty string provided it's not at the edge of a word.
+'\<' | Match the empty string at the beginning of word.
+'\>' | 	Match the empty string at the end of word.
