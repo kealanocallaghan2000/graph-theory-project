@@ -125,3 +125,15 @@ What is a formal language? A formal language is a set of finite strings. A strin
 * The set of all strings that begin with the letter ‘q’
 
 It is said that a regular expression can decide a formal language if both their statments are equivalent for each string. Eg. **X** is in the language **Y**, **X** is accepted by **Z**, or in other words, **X** is equivalent to **Z** - they both describe the same set of strings.
+
+By applying the basic operators of a regular expression (| * .), you can already match all regular languages (a language which can be expressed with finite automota). After this, you need to use a few more tools of regular expression to fully match all formal languages, such as :
+* Backreferences.
+* Recursion.
+
+###### Backreferences
+Backreferences extend a regular expressions syntax by allowing you to refer a segment of the string that was captured by the regex in another location. This gives you alot more expressive power than regular languages.
+
+###### Recursion
+Recursion in regular expressions can be even more powerful. This is when you repeat the regular expression, in the middle of the matching string. The simplest example of this would be, if we wanted to match all the strings of 'b's, we can already do this with the regex b*. This works as we accept the empty string, as the whole thing we're matching is optional. If we didnt have an empty string, then it must be 'b'. Following the b we either have nothing or we have a recurring application of the whole regular expression.
+
+This shows that with a few extra tools of the regular expression such as **backreference's** and **recursion**, it's possibilities are limitless and can match any formal language, demonstrating how truly powerful they are.
