@@ -62,7 +62,7 @@ Operator | Effect
 '+' | The preceding item will be matched one or more times.
 '{N}' | The preceding item is matched exactly N times.
 '{N,}' | The preceding item is matched N or more times.
-{N,M} | The preceding item is matched at least N times, but not more than M times.
+'{N,M}' | The preceding item is matched at least N times, but not more than M times.
 '-' | represents the range if it's not first or last in a list or the ending point of a range in a list.
 '^' | Matches the empty string at the beginning of a line; also represents the characters not in the range of a list.
 '$' | Matches the empty string at the end of a line.
@@ -70,3 +70,30 @@ Operator | Effect
 '\B' | Matches the empty string provided it's not at the edge of a word.
 '\<' | Match the empty string at the beginning of word.
 '\>' | 	Match the empty string at the end of word.
+
+The most important part about regular expressions is the concepts. It's important to not get bogged down in learning all the different operators as when you figure out what they all do, the differences in syntax amount to little more than small dialects. 
+
+Some real world applications of regular expressions are:
+###### Email validation
+
+'^[^@ ]+@[^@ ]+\.[^@ \.]{2,}$' -> This regular expression can check if an email address is the valid syntax.
+
+###### Password validation
+
+'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])' -> This regular expression can check if an password is the valid syntax. eg. includes uppercase and special characters
+
+###### Credit card number Validation:
+
+Visa Credit Card: ^4[0–9]{12}(?:[0–9]{3})?$
+American Express Credit Card: ^3[47][0–9]{13}$
+Mastercard: ^(?:5[1–5][0–9]{2}|222[1–9]|22[3–9][0–9]|2[3–6][0–9]{2}|27[01][0–9]|2720)[0–9]{12}$
+Discover Card: ^6(?:011|5[0–9]{2})[0–9]{12}$
+
+
+As you can see, Regular expressions are extremely useful in computer science, especially in any information based systems where searching and replacing text is commonplace.
+
+
+
+### How do regular expressions differ across implementations?
+
+As regular expressions are so powerful and useful across many different applications, it's no surprise that they can differ between different implementations.
