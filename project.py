@@ -1,62 +1,59 @@
-import sys
 import os
+import sys
 
 # Asks the user to enter their file location
 # User must enter their file path in the format c/users/keala/repo/graph-theory-project/README.txt
 # This is to deal with the /mnt/ file problem when using a WSL
 file_path = input("Enter the path of your file in the format c/users/file.txt: ")
 
-output = ""
-count = 1
-
-# Asserts the path exists
+# Ensures the path exists
 assert os.path.exists("/mnt/"+file_path), "I did not find the file at, "+str(file_path)
 
-regex = input("Enter the regex you would like to postfix: ")
+regex = input("Enter your regular expression using the operators * . |: ")
 
 def shunt(regex):
     """Convert infix expressions to postfix."""
-    # The eventual output.
+    # Postfix output
     postfix = ""
-    # The shunting yard operator stack.
+    # The operator stack
     stack = ""
-    # Operator precedence.
-    prec = {'*': 100, '.': 90, '|': 80}
-    # Loop through the input a character at a time.
-    for c in regex:
-        # c is an operator.
-        if c in {'*', '.', '|'}:
-            # Check what is on the stack.
-            while len(stack) > 0 and stack[-1] != '(' and prec[stack[-1]] >= prec[c]:
-                # Append operator at top of stack to output.
+    # Operator precedence
+    prec = {'*': 10, '.': 9, '|': 8}
+    # Loop through the user input one character at a time
+    for ch in regex:
+        # if ch is an operator.
+        if ch in {'*', '.', '|'}:
+            # Check what is on the stack
+            while len(stack) > 0 and stack[-1] != '(' and prec[stack[-1]] >= prec[ch]:
+                # Append operator at top of stack to output
                 postfix = postfix + stack[-1]
-                # Remove operator from stack.
+                # Remove operator from stack
                 stack = stack[:-1]
-            # Push c to stack.
-            stack = stack + c
-        elif c == '(':
-            # Push c to stack.
-            stack = stack + c
-        elif c == ')':
+            # Push ch to stack
+            stack = stack + ch
+        elif ch == '(':
+            # Push c to stack
+            stack = stack + ch
+        elif ch == ')':
             while stack[-1] != "(":
-                # Append operator at top of stack to output.
+                # Append operator at top of stack to output
                 postfix = postfix + stack[-1]
-                # Remove operator from stack.
+                # Remove operator from stack
                 stack = stack[:-1]
-            # Remove open bracket from stack.
+            # Remove open bracket from stack
             stack = stack[:-1]
-                # c is a non-special.
+                # c is a non-special
         else:
-            # Push it to the output.
-            postfix = postfix + c
+            # Push it to the output
+            postfix = postfix + ch
 
     # Empty the operator stack.
     while len(stack) != 0:
-        # Append operator at top of stack to output.
+        # Append operator at top of stack to output
         postfix = postfix + stack[-1]
-        # Remove operator from stack.
+        # Remove operator from stack
         stack = stack[:-1]
-    # Return the postfix version of infix.
+    # Return the postfix version of infix
     return postfix
 
 class State:
@@ -205,14 +202,17 @@ if __name__ == "__main__":
     print()
 
     counter = 1 # line 1..2..3..
-
+    
     file = open("/mnt/"+file_path) # reads file
 
     for line in file: # for every line in the txt file
-        print(f"Line: {counter}  ")
-        for word in line.split(): # for every word in the line
+        wordCounter = 1 # word 1..2..3..
+        for word in line.split(): # for every word in the line   
             match = nfa.match(word) # match the word to the regular expression
-            print(f"{word} - {match}")
+            if match == True: # if it found a match
+                print(f"Line {counter}:   ") # line counter
+                print(f"Word {wordCounter}: {word} - {match}") # word counter and match     
+            wordCounter = wordCounter + 1
         counter = counter + 1
         print()
     print()

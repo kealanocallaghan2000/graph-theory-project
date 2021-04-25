@@ -1,3 +1,51 @@
+# ReadMe
+
+## Contents:
+##### 1. Programme description
+##### 2. Programme instructions
+##### 3. Algorithm explanation
+##### 4. Log of progress
+##### 5. Definitions
+
+## Programme description
+The following programme is written in Python3 with no external libraries or imports to search a text file using a regular expression and to output any (or none) matches that it finds within a text file.
+The programme will take the path of a text file and the regular expression. It will then convert the regular expression to postfix, convert the postfix to a nfa, and then match the nfa to each word in each line of the text.
+
+## Programme Instructions 
+
+* To run the project, clone the code and depending on your version of python type "python3 project.py".
+* At first you will be asked to enter the location of your txt file which you're looking to process.
+* Type your txt file path in the format 'C/Users/Name/file.txt' and the programme will interpret that for
+the WSL format.
+* If the programme finds your file, it will then ask you to then enter the regular expression you would
+like to apply on the text file (explained below). 
+* Once you've entered your regular expression and hit enter, the programme will apply it and output
+each word, in each line of your textfile and whether or not it matches the regular expression you chose.
+
+## Algorithm Explained
+
+##### Shunting yard algorithm
+In order for the regular expression to be converted into an nfa to be applied on the text, it must first be converted into postfix using the shunting yard algorithm. The 'shunt' method reads in the users regular expression and pops the operators or letters onto a stack according to its precedence in the code. '*' has the highest precedence, followed by '.' followed by '|'. Once the precedence has been applied to the regex it will return the variable 'postfix' which will be a string that can be used later in the programme. Eg. (a|b) -> ab|
+
+##### Thompsons construction
+Once the programme has created it's postfix notation of the regex, it is time for it to be converted into an NFA using 'Thompson's Construction'.
+This section of the programme is split into two classes (State and NFA) and one large method (re_to_nfa):
+* In the 'State' class, it is used to create a coded version of an nfa's states. Meaning it can have the state of the nfa and the arrows coming from it.
+* In the 'NFA' class, the constructor will take in three params, self,the String 's' and 'end'. The method 'match' takes in self and 's' which matches the string s to the NFA. The method returns True or False depending on whether the string matches the NFA or not.
+
+**Finally** the method re_to_nfa, takes in the posdtfix of the users regular expression, loops through each character in the posdtfix and applies different methodoligies depending on which operator (or letter) is next in the regular expression. It creates start and end points for the nfa depending on the character and appends the NFA accordingly, once the string has been looped through, it will return ther stack which should only contain one NFA at the end.
+
+##### Bringing everything together
+The final piece of the code connects all of the methods and the users input together to match the regular expression to the users text file as follows:
+* Postfix = shunting yard algorithm applied on the users regex -> shunt(regex)
+* Nfa = the re_to_nfa method applied on the postfix from the previous point.
+* For every line in the users file
+* For every word in the line from above
+* match = the nfa on the word in the line
+* If the match = True, print the line and the word where the regular expression matched the word.
+* Counters++ and repeat this process until every word has been applied.
+
+
 ## Log of progress
 
 Feb 7th:
@@ -30,19 +78,6 @@ Apr 17:
 * Brought back my file input code and regular expression input code.
 * Watched videos on matching function again to figure out how it works.
 * User can now choose their own regular expression and text file path.
-
-
-## Programme Instructions 
-
-* To run the project, clone the code and depending on your version of python type "python3 project.py".
-* At first you will be asked to enter the location of your txt file which you're looking to process.
-* Type your txt file path in the format 'C/Users/Name/file.txt' and the programme will interpret that for
-the WSL format.
-* If the programme finds your file, it will then ask you to then enter the regular expression you would
-like to apply on the text file (explained below). 
-* Once you've entered your regular expression and hit enter, the programme will apply it and output
-each word, in each line of your textfile and whether or not it matches the regular expression you chose.
-
 
 # Definitions
 
@@ -92,9 +127,6 @@ Some real world applications of regular expressions are:
 
 
 As you can see, Regular expressions are extremely useful in computer science, especially in any information based systems where searching and replacing text is commonplace.
-
-
-
 
 ### How do regular expressions differ across implementations?
 
