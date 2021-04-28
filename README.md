@@ -6,12 +6,14 @@
 ##### 3. Algorithm explanation
 ##### 4. Log of progress
 ##### 5. Definitions
+##### 6. Conclusion
+##### 7. References
 
-## Programme description
+## 1. Programme description
 The following programme is written in Python3 with no external libraries or imports to search a text file using a regular expression and to output any (or none) matches that it finds within a text file.
 The programme will take the path of a text file and the regular expression. It will then convert the regular expression to postfix, convert the postfix to a nfa, and then match the nfa to each word in each line of the text.
 
-## Programme Instructions 
+## 2. Programme Instructions 
 
 * To run the project, clone the code and depending on your version of python type "python3 project.py".
 * At first you will be asked to enter the location of your txt file which you're looking to process.
@@ -22,7 +24,7 @@ like to apply on the text file (explained below).
 * Once you've entered your regular expression and hit enter, the programme will apply it and output
 each word, in each line of your textfile and whether or not it matches the regular expression you chose.
 
-## Algorithm Explained
+## 3. Algorithm Explained
 
 ##### Shunting yard algorithm
 In order for the regular expression to be converted into an nfa to be applied on the text, it must first be converted into postfix using the shunting yard algorithm. The 'shunt' method reads in the users regular expression and pops the operators or letters onto a stack according to its precedence in the code. '*' has the highest precedence, followed by '.' followed by '|'. Once the precedence has been applied to the regex it will return the variable 'postfix' which will be a string that can be used later in the programme. Eg. (a|b) -> ab|
@@ -46,7 +48,7 @@ The final piece of the code connects all of the methods and the users input toge
 * Counters++ and repeat this process until every word has been applied.
 
 
-## Log of progress
+## 4. Log of progress
 
 Feb 7th:
 * Created a repository and a txt file as my first commit for the graph theory project, brushed up on ideas and oncepts to date to help with understanding how to go about the project. No grasp on how the python will be implemented to use automata.
@@ -79,7 +81,7 @@ Apr 17:
 * Watched videos on matching function again to figure out how it works.
 * User can now choose their own regular expression and text file path.
 
-# Definitions
+# 5. Definitions
 
 ### What is a regular expression?
 
@@ -169,3 +171,24 @@ Backreferences extend a regular expressions syntax by allowing you to refer a se
 Recursion in regular expressions can be even more powerful. This is when you repeat the regular expression, in the middle of the matching string. The simplest example of this would be, if we wanted to match all the strings of 'b's, we can already do this with the regex b*. This works as we accept the empty string, as the whole thing we're matching is optional. If we didnt have an empty string, then it must be 'b'. Following the b we either have nothing or we have a recurring application of the whole regular expression.
 
 This shows that with a few extra tools of the regular expression such as **backreference's** and **recursion**, it's possibilities are limitless and can match any formal language, demonstrating how truly powerful they are.
+
+## 6. Conclusion
+When I started this project, I was sure that it was just a general excercise for us to understand the basics of graph theory and python, but as we learned more in the lectures and as I done my own research, I realized that this project had a lot more to do with the fundamentals of computing and about strengthening my ability to research and learn about some of these core concepts myself, which I believe was the primary objective of this project.
+
+Some of the biggest lessons I learned throughout this project are:
+* How to use a windows subsystem for linux, as well as solidifying my knowledge with the command line.
+* **Automaton's** are a very abstract machine with a massive amount of power in regards to computing and understanding how machines solve problems, which I wouldnt have learned about if it wasn't for this project.
+* **Regular expressions** are another massivley powerful tool to programmers as on a larger scale, they can search and replace inexact patterns in files and code - which also plays a huge part in data and information science.
+
+## References
+
+* Throughout this project, I've turned to many sourcea and educational writings in order to research and get a better grasp of what the main objective of the project really was. 
+
+These were:
+* *Regular expressions — Isaac Computer Science* - https://isaaccomputerscience.org/concepts/dsa_toc_regex#:~:text=Regular%20expressions%20are%20very%20useful,replaces%20them%20with%20another%20group
+* *Basics of Automata Theory - Stanford University* - https://cs.stanford.edu/people/eroberts/courses/soco/projects/2004-05/automata-theory/basics.html
+* *Stack Overflow - List of all regex implementations?* - https://stackoverflow.com/questions/4644847/list-of-all-regex-implementations
+* http://www.regular-expressions.info/
+* *Stack Exchange - What is the Relationship Between Programming Languages, Regular Expressions and Formal Languages?* - https://cs.stackexchange.com/questions/30639/what-is-the-relationship-between-programming-languages-regular-expressions-and
+* *Formal Languages - Computer Science Field Guide* - https://archive.csfieldguide.org.nz/2.7.1/en/chapters/formal-languages.html
+* *Back to Basics: Regular Expressions and Formal Languages* - https://dzone.com/articles/back-basics-regular
